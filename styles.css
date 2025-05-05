@@ -1,0 +1,11 @@
+/* Banner Ad Styling */
+.ad-container {
+    max-width: 728px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Adjust main content to account for banner */
+#home {
+    padding-top: 0; /* Remove extra padding since we added it to the banner container */
+}

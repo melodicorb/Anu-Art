@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anu Art - AI Image Generator</title>
+    <meta name="description" content="Create stunning AI-generated artwork with Anu Art. Transform your ideas into beautiful images using various artistic styles.">
+    <meta name="keywords" content="AI art, image generator, digital art, artificial intelligence, text to image">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body class="bg-gray-900 text-white">
+    <nav class="fixed w-full bg-gray-800 shadow-lg z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="assets/logo.svg" alt="Anu Art Logo" class="h-10 w-10">
+                <span class="ml-3 text-xl font-bold">Anu Art</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-purple-400">Home</a>
+                <a href="#generate" class="hover:text-purple-400">Generate</a>
+                <a href="#gallery" class="hover:text-purple-400">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Ad Section -->
+    <div class="w-full bg-gray-800 pt-20 pb-4 flex justify-center">
+        <div class="ad-container">
+            <script type="text/javascript">
+            atOptions = {
+                'key' : '4e18b31c73261a675cef0768eff80297',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/4e18b31c73261a675cef0768eff80297/invoke.js"></script>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+                    Transform Text Into Art
+                </h1>
+                <p class="text-xl mb-8">Create stunning AI-generated artwork in various styles</p>
+                <a href="#generate" class="bg-purple-600 hover:bg-purple-700 px-8 py-4 rounded-lg text-lg font-semibold transition-colors">
+                    Start Creating
+                </a>
+            </div>
+        </section>
+
+        <!-- Generator Section -->
+        <section id="generate" class="min-h-screen py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Input Panel -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-bold mb-6">Create Your Art</h2>
+                        <form id="generationForm" class="space-y-6">
+                            <div>
+                                <label class="block mb-2">Describe what you want to create</label>
+                                <div class="mb-2 text-sm text-gray-400">
+                                    Be specific about: subject, setting, lighting, mood, colors, and perspective.
+                                </div>
+                                <textarea id="prompt" class="w-full bg-gray-700 rounded p-3" rows="4" 
+                                    placeholder="Example: A serene mountain lake at sunset, with snow-capped peaks reflected in crystal clear water. Pink and orange clouds in the sky." required></textarea>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-400 mb-2">Example prompts:</p>
+                                    <div class="space-y-2">
+                                        <button type="button" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 example-prompt">
+                                            A cute red fox sitting in a magical forest, surrounded by glowing mushrooms
+                                        </button>
+                                        <button type="button" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 example-prompt">
+                                            Futuristic cityscape at night with neon lights and flying cars
+                                        </button>
+                                        <button type="button" class="text-sm bg-gray-700 px-3 py-1 rounded hover:bg-gray-600 example-prompt">
+                                            Portrait of a warrior princess with flowing red hair and golden armor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block mb-2">Style</label>
+                                <select id="style" class="w-full bg-gray-700 rounded p-3">
+                                    <option value="realistic">Realistic</option>
+                                    <option value="anime">Anime</option>
+                                    <option value="digital">Digital Art</option>
+                                    <option value="oil">Oil Painting</option>
+                                    <option value="watercolor">Watercolor</option>
+                                    <option value="sketch">Sketch</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block mb-2">Size</label>
+                                <select id="size" class="w-full bg-gray-700 rounded p-3">
+                                    <option value="512x512">Square (512x512)</option>
+                                    <option value="512x768">Portrait (512x768)</option>
+                                    <option value="768x512">Landscape (768x512)</option>
+                                    <option value="1024x768">HD (1024x768)</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg font-semibold transition-colors">
+                                Generate Image
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Preview Panel -->
+                    <div class="bg-gray-800 p-6 rounded-lg">
+                        <h2 class="text-2xl font-bold mb-6">Preview</h2>
+                        <div id="preview" class="aspect-square bg-gray-700 rounded-lg flex items-center justify-center">
+                            <p id="previewText" class="text-gray-400">Your image will appear here</p>
+                            <img id="generatedImage" class="hidden max-w-full max-h-full rounded-lg" alt="Generated artwork">
+                        </div>
+                        <div id="controls" class="mt-6 flex space-x-4 hidden">
+                            <button id="download" class="flex-1 bg-green-600 hover:bg-green-700 py-3 rounded-lg font-semibold transition-colors">
+                                Download
+                            </button>
+                            <button id="share" class="flex-1 bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition-colors">
+                                Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; <span id="currentYear"></span> Anu Art. All rights reserved.</p>
+            <!-- Footer Banner Ad -->
+            <div class="mt-4 flex justify-center">
+                <div class="ad-container">
+                    <script type="text/javascript">
+                    atOptions = {
+                        'key' : '4e18b31c73261a675cef0768eff80297',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/4e18b31c73261a675cef0768eff80297/invoke.js"></script>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="feedback" class="fixed bottom-4 right-4 p-4 rounded-lg hidden"></div>
+
+    <script src="app.js"></script>
+    <script type='text/javascript' src='//pl26565982.profitableratecpm.com/21/74/44/21744463bdd1d2be4ea6ed8ff42ea9e1.js'></script>
+</body>
+</html>
